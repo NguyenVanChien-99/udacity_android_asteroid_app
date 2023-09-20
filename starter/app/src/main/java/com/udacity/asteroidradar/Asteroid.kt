@@ -17,4 +17,8 @@ data class Asteroid(
     val relativeVelocity: Double,
     val distanceFromEarth: Double,
     val isPotentiallyHazardous: Boolean
-) : Parcelable
+) : Parcelable {
+    fun potentiallyHazardousDesc(): String {
+        return "Potentially Hazardous : ${if (isPotentiallyHazardous) "BAD" else "GOOD"}"
+    }
+}

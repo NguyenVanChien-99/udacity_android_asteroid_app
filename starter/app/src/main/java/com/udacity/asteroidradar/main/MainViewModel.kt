@@ -25,6 +25,7 @@ class MainViewModel(
 
     lateinit var startDate: String
     lateinit var endDate: String
+    lateinit var today: String
 
     private val database = GetDBInstance(application)
     private val repository = Repository(database)
@@ -40,6 +41,10 @@ class MainViewModel(
         val day = Calendar.getInstance()
 
         val date = SimpleDateFormat(Constants.API_QUERY_DATE_FORMAT, Locale.getDefault())
+        today = date.format(day.time)
+
+        //next week
+        day.add(Calendar.DAY_OF_YEAR, 1)
         startDate = date.format(day.time)
         day.add(Calendar.DAY_OF_YEAR, DEFAULT_END_DATE_DAYS)
         endDate = date.format(day.time)
@@ -60,7 +65,7 @@ class MainViewModel(
     }
 
 
-    val todayAsteroid = repository.getTodayAsteroid(startDate)
+    val todayAsteroid = repository.getTodayAsteroid(today)
     val weelAsteroid = repository.getWeekAsteroid(startDate, endDate)
 
 
