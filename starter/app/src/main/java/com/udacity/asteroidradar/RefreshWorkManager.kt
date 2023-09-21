@@ -31,9 +31,7 @@ class RefreshWorkManager (context : Context, Parameter : WorkerParameters):
 
 
         return try {
-            repository.refreshDates(
-                start, end,KEY
-            )
+            repository.refreshDates(KEY)
             Result.success()
         }
         catch (error :Exception){

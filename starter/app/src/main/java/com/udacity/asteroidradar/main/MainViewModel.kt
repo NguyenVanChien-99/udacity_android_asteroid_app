@@ -51,7 +51,7 @@ class MainViewModel(
 
         viewModelScope.launch {
             try {
-                repository.refreshDates(startDate, endDate, KEY)
+                repository.refreshDates(KEY)
             } catch (error: Exception) {
                 Log.i("MainViewModel", "Failed to refresh data, error $error")
             }

@@ -24,14 +24,12 @@ class Repository(private val database: MyDatabase) {
     val pictureOfDay:LiveData<PictureOfDay> = _pictureOfDay
 
 
-    suspend fun refreshDates(start:String, end:String, apikey:String){
+    suspend fun refreshDates(apikey:String){
 
         withContext(Dispatchers.IO){
             val data = parseAsteroidsJsonResult(
                 JSONObject(
-                    AsteroidApi.service.getAsteroids(
-                        start, end, apikey
-                    )
+                    AsteroidApi.service.getAsteroids(apikey)
                 )
             )
             database.dto.delete()
