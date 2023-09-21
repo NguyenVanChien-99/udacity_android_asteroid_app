@@ -25,7 +25,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:statusIcon="@{item.isPotentiallyHazardous}"
-            android:contentDescription="@{item.potentiallyHazardousDesc()}"
+            android:contentDescription="@{item.potentiallyHazardous ? @string/potentially_hazardous_asteroid_image : @string/not_hazardous_asteroid_image}"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
